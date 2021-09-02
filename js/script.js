@@ -14,7 +14,7 @@ function randomizer(min, max){
 
 // Programma Principale
 // // Disegno il campo da gioco.
-var dimensioneGriglia = parseInt(prompt("In quanto tempo vuoi morire? Subito (Scrivi 100); Adesso (Scrivi 80), Ieri (Scrivi 50)"));
+var dimensioneGriglia = parseInt(prompt("Questo è un campo minato! In quanto tempo vuoi morire? Poco (Scrivi 100); Adesso (Scrivi 80), Sono già morto (Scrivi 50)"));
 while(dimensioneGriglia != 50 && dimensioneGriglia != 80 && dimensioneGriglia != 100){
     dimensioneGriglia = parseInt(prompt("Iniziamo bene -.-. Scrivi 100, 80 o 50)"));
 }
@@ -52,10 +52,18 @@ document.getElementById("campo").addEventListener("click",
             if(clickutente == bombe[i]){
                 event.target.classList.add("nero");
                 alert("Sei esploso dopo " + (sceltaUtente.length - 1) + " passi! Passa da Taffo, raccogli i tuoi resti e riprova ricaricando la pagina!");  
+                document.getElementById("campo").remove();
+                document.getElementById("gioca").classList.add("open");
+                document.getElementById("punteggio").classList.add("open");
+                document.getElementById("score").innerHTML = (sceltaUtente.length - 1);
             }
         }
         if(sceltaUtente.length == 84){
               alert("Hai vinto dopo 84 passi. Sei stato fortunato e io non vedo l'ora di raccogliere i tuoi resti. Ricarica la pagina e preparati ad esplodere.");
+              document.getElementById("campo").remove();
+              document.getElementById("gioca").classList.add("open");
+              document.getElementById("punteggio").classList.add("open");
+              document.getElementById("score").innerHTML = (sceltaUtente.length - 1);
         }        
     }
 );
