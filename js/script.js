@@ -20,9 +20,8 @@ while(dimensioneGriglia != 50 && dimensioneGriglia != 80 && dimensioneGriglia !=
 }
 
 campo(dimensioneGriglia);
-// console.log(campo);
 
-// Il computer deve generare 16 numeri casuali tra 1 e 100 (bombe).
+// Il computer deve generare 16 numeri casuali tra 1 e la dimensione del campo minato.
 // I numeri non possono essere duplicati.
 
 const bombe = [];
@@ -51,7 +50,7 @@ document.getElementById("campo").addEventListener("click",
         for(i=0; i < bombe.length; i++) {
             if(clickutente == bombe[i]){
                 event.target.classList.add("nero");
-                alert("Sei esploso dopo " + (sceltaUtente.length - 1) + " passi! Passa da Taffo, raccogli i tuoi resti e riprova ricaricando la pagina!");  
+                alert("Sei esploso dopo " + (sceltaUtente.length - 1) + " passi! Passa da Taffo, raccogli i tuoi resti e riprova.");  
                 document.getElementById("campo").remove();
                 document.getElementById("gioca").classList.add("open");
                 document.getElementById("punteggio").classList.add("open");
@@ -59,7 +58,7 @@ document.getElementById("campo").addEventListener("click",
             }
         }
         if(sceltaUtente.length == 84){
-              alert("Hai vinto dopo 84 passi. Sei stato fortunato e io non vedo l'ora di raccogliere i tuoi resti. Ricarica la pagina e preparati ad esplodere.");
+              alert("Sei ancora vivo? Sei stato fortunato e io non vedo l'ora di raccogliere i tuoi resti. Riprova, se ne hai il coraggio.");
               document.getElementById("campo").remove();
               document.getElementById("gioca").classList.add("open");
               document.getElementById("punteggio").classList.add("open");
