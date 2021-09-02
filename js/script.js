@@ -14,8 +14,12 @@ function randomizer(min, max){
 
 // Programma Principale
 // // Disegno il campo da gioco.
+var dimensioneGriglia = parseInt(prompt("In quanto tempo vuoi morire? Subito (Scrivi 100); Adesso (Scrivi 80), Ieri (Scrivi 50)"));
+while(dimensioneGriglia != 50 && dimensioneGriglia != 80 && dimensioneGriglia != 100){
+    dimensioneGriglia = parseInt(prompt("Iniziamo bene -.-. Scrivi 100, 80 o 50)"));
+}
 
-campo(100);
+campo(dimensioneGriglia);
 // console.log(campo);
 
 // Il computer deve generare 16 numeri casuali tra 1 e 100 (bombe).
@@ -23,12 +27,12 @@ campo(100);
 
 const bombe = [];
 while(bombe.length < 16){
-    var bomba = randomizer(1, 100);
+    var bomba = randomizer(1, dimensioneGriglia);
     if(bombe.indexOf(bomba) === -1){
         bombe.push(bomba);
     } 
 }
-console.log(bombe);
+console.log("Posizione segreta delle bombe " + bombe);
 
 
 // In seguito il giocatore clicca sulle celle numerate (non può cliccare più volte sulla stessa cella)
@@ -50,7 +54,6 @@ document.getElementById("campo").addEventListener("click",
                 alert("Sei esploso dopo " + (sceltaUtente.length - 1) + " passi! Passa da Taffo, raccogli i tuoi resti e riprova ricaricando la pagina!");  
             }
         }
-        console.log(sceltaUtente.length);
         if(sceltaUtente.length == 84){
               alert("Hai vinto dopo 84 passi. Sei stato fortunato e io non vedo l'ora di raccogliere i tuoi resti. Ricarica la pagina e preparati ad esplodere.");
         }        
