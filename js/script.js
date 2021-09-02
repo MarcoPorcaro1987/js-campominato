@@ -57,7 +57,7 @@ document.getElementById("campo").addEventListener("click",
                 document.getElementById("score").innerHTML = (sceltaUtente.length - 1);
             }
         }
-        if(sceltaUtente.length == 84){
+        if(sceltaUtente.length == (dimensioneGriglia) - 16){
               alert("Sei ancora vivo? Sei stato fortunato e io non vedo l'ora di raccogliere i tuoi resti. Riprova, se ne hai il coraggio.");
               document.getElementById("campo").remove();
               document.getElementById("gioca").classList.add("open");
