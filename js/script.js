@@ -39,7 +39,7 @@ var sceltaUtente = [];
 var clickutente = "";
 document.getElementById("campo").addEventListener("click", 
     function(event){
-        clickutente = event.target.innerHTML;
+        clickutente = parseInt(event.target.innerHTML);
         if(sceltaUtente.includes(event.target.innerHTML)){
             alert("Non barare! Seleziona un'altra casella!");
         } else {
@@ -47,16 +47,15 @@ document.getElementById("campo").addEventListener("click",
         event.target.classList.add("rosso");
         }
 
-        for(i=0; i < bombe.length; i++) {
-            if(clickutente == bombe[i]){
-                event.target.classList.add("nero");
-                alert("Sei esploso dopo " + (sceltaUtente.length - 1) + " passi! Passa da Taffo, raccogli i tuoi resti e riprova.");  
-                document.getElementById("campo").remove();
-                document.getElementById("gioca").classList.add("open");
-                document.getElementById("punteggio").classList.add("open");
-                document.getElementById("score").innerHTML = (sceltaUtente.length - 1);
-            }
+        if(bombe.includes(clickutente)){
+            event.target.classList.add("nero");
+            alert("Sei esploso! Passa da Taffo, raccogli i tuoi resti e riprova.");  
+            document.getElementById("campo").remove();
+            document.getElementById("gioca").classList.add("open");
+            document.getElementById("punteggio").classList.add("open");
+            document.getElementById("score").innerHTML = (sceltaUtente.length - 1);
         }
+     
         if(sceltaUtente.length == (dimensioneGriglia) - 16){
               alert("Sei ancora vivo? Sei stato fortunato e io non vedo l'ora di raccogliere i tuoi resti. Riprova, se ne hai il coraggio.");
               document.getElementById("campo").remove();
